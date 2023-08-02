@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 html,
 body {
   width: 100%;
@@ -13,12 +17,62 @@ body {
   padding: 30px 16px;
 }
 
+// Search
 .search {
-  margin-block: 20px;
+
+  width: 100%;
+  border: 1px solid #333;
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+
+  &_wrapper {
+    margin-block: 20px;
+    position: relative;
+  }
+
+  &_input {
+    border: none;
+    flex: 1;
+    height: 30px;
+    font-size: 14px;
+    padding: 0 10px;
+    outline: none;
+  }
+
+  &_icon {
+    font-size: 14px;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-left: 1px solid #888787;
+  }
+
+  &_result {
+    width: 100%;
+    background-color: #fff;
+    transition: all 200ms;
+    border-radius: 4px;
+    box-shadow: 0px 5px 10px 0px #727272;
+    position: absolute;
+    z-index: 1;
+    overflow: hidden;
+
+
+    &.visible {
+      margin-top: 16px;
+      padding: 16px;
+    }
+
+  }
 }
 
 
+// List
 .list {
+  &_container {
+    margin-bottom: 16px;
+  }
+
   &_header {
     cursor: pointer;
     user-select: none;
@@ -47,31 +101,37 @@ body {
   &.visible {
     grid-template-rows: 1fr;
   }
+}
 
-  .table_container {
-    overflow: auto;
-    max-height: 500px;
-    width: 100%;
+.table_container {
+  overflow: auto;
+  max-height: 400px;
+  width: 100%;
+}
+
+
+.table {
+  width: 100%;
+  background-color: #ffffff;
+  text-align: center;
+
+  thead {
+    position: sticky;
+    top: 0;
+    box-shadow: 0px 10px 10px -10px #727272;
   }
 
-
-  .table {
-    width: 100%;
-    background-color: #ffffff;
-    text-align: center;
-
-    th {
-      
+  th {
     background-color: #bebebe;
+  }
+
+  tr {
+    &:nth-child(odd) {
+      background-color: #c7c7c7;
     }
 
-    tr {
-      &:nth-child(odd) {
-        background-color: #c7c7c7;
-      }
-      &:nth-child(even) {
-        background-color: #c4c4c4;
-      }
+    &:nth-child(even) {
+      background-color: #c4c4c4;
     }
   }
 }

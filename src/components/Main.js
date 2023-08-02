@@ -8,10 +8,12 @@ const Main = ({ data = [] }) => {
   const cleanData = () => {
     if (data && data.length) {
       return data.reduce((prev, curr) => {
-        if (prev[curr.continent]) {
-          prev[curr.continent].push(curr);
-        } else {
-          prev[curr.continent] = [curr];
+        if (curr.continent && curr.continent.toLowerCase() !== 'all') {
+          if (prev[curr.continent]) {
+            prev[curr.continent].push(curr);
+          } else {
+            prev[curr.continent] = [curr];
+          }
         }
 
         return prev;
@@ -26,7 +28,7 @@ const Main = ({ data = [] }) => {
 
   return (
     <section className="main_container">
-      <Search />
+      <Search data={data} />
       <ListWrapper data={modifiedData} />
     </section>
   );
