@@ -25,15 +25,14 @@ const Search = ({ data }) => {
     searchCountry(searchTerm);
   };
 
-  const focusOnInput = () => {
-    ref.current.focus();
-  };
-
   return (
     <section className="search_wrapper">
       <div
         className="search"
-        onClick={() => setIsInputInFocus(true)}
+        onClick={() => {
+          ref.current.focus();
+          setIsInputInFocus(true);
+        }}
         onBlur={() => setIsInputInFocus(false)}
       >
         <input
@@ -44,7 +43,12 @@ const Search = ({ data }) => {
           value={value}
           onChange={handleOnChange}
         />
-        <i className="fa fa-search search_icon" onClick={focusOnInput} />
+        <i
+          className="fa fa-search search_icon"
+          onMouseDown={(e) => {
+            e.preventDefault();
+          }}
+        />
       </div>
       <div
         className={`search_result table_wrapper ${

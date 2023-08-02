@@ -50,13 +50,14 @@ body {
   &_result {
     width: 100%;
     background-color: #fff;
-    transition: all 200ms;
+    margin-top: 0px;
+    padding: 0px;
+    transition: grid-template-rows 300ms, margin-top 100ms 50ms, padding 100ms 50ms !important;
     border-radius: 4px;
     box-shadow: 0px 5px 10px 0px #727272;
     position: absolute;
     z-index: 1;
     overflow: hidden;
-
 
     &.visible {
       margin-top: 16px;
@@ -96,7 +97,7 @@ body {
   display: grid;
   grid-template-rows: 0fr;
   overflow: hidden;
-  transition: grid-template-rows 0.3s;
+  transition: grid-template-rows 300ms;
 
   &.visible {
     grid-template-rows: 1fr;
